@@ -1,21 +1,19 @@
 #include "easyfind.hpp"
+#include <vector>
+#include <deque>
 
-int main( int ac, char ** av )
+int main(void)
 {
-    if ( ac != 2 )
-        return EXIT_FAILURE;
+    std::vector<int> v;
+    for (int i = 0; i < 10; i++)
+        v.push_back(i);
+    std::deque<int> dq( v.begin(), v.end() );
+    std::cout << v << std::endl;
+    std::cout << dq << std::endl;
 
-    int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-
-    std::vector<int> vect( arr, arr + sizeof( arr ) / sizeof( int ) );
-    std::list<int> list( vect.begin(), vect.end() );
-
-    try {
-        easyfind(vect, std::atoi( av[1] ));
-        easyfind(list, std::atoi( av[1] ));
-    } catch (std::exception e)
-    {
-        std::cout << "'" << av[1] << "' not found and threw an exception" << std::endl ;
-    }
-    return EXIT_SUCCESS;
+    easyfind(v, 7);
+    easyfind(v, 70);
+    easyfind(dq, 7);
+    easyfind(dq, 70);
+    return 0;
 }
