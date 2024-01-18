@@ -8,6 +8,7 @@ CXX = c++
 CPPFLAGS = -std=c++98 -Wall -Wextra -Werror -fsanitize=address -g3
 
 SRC =	main.cpp\
+		Span.cpp\
 
 OBJ = $(SRC:.cpp=.o)
 
