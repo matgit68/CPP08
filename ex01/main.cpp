@@ -9,34 +9,30 @@ int main() {
     try { sp.addNumber(10); } catch(Span::FullSpanException &e) { std::cout << e.what(); }
     try { sp.addNumber(5); } catch(Span::FullSpanException &e) { std::cout << e.what(); }
     try { sp.addNumber(11); } catch(Span::FullSpanException &e) { std::cout << e.what() << std::endl; }
-    std::cout << sp.shortestSpan() << std::endl;
-    std::cout << sp.longestSpan() << std::endl;
+    try {
+        std::cout << sp.shortestSpan() << std::endl;
+        std::cout << sp.longestSpan() << std::endl;
+    } catch (Span::TooFewValuesException &e) { std::cout << e.what() << std::endl; }
 
-    // Lire la ligne complète depuis stdin
+/*-------------------------------------------------------------------------------------*/
+
+    std::vector<int> vector;
+    Span sp2 = Span(vector.size() - 1);
     std::string inputLine;
     std::getline(std::cin, inputLine);
-
-    // Utiliser un stringstream pour extraire les entiers
-    std::istringstream ss(inputLine);
-    std::vector<int> vector;
-
-    // Variable pour stocker chaque entier lu
+    std::stringstream ss(inputLine);
     int num;
 
-    // Lire les entiers séparés par des virgules
     while (ss >> num) {
-        // Ajouter l'entier au vecteur
         vector.push_back(num);
-
-        // Ignorer la virgule (si présente)
         if (ss.peek() == ',')
             ss.ignore();
     }
-
-    Span sp2 = Span(vector.size() - 1);
     try { sp2.addNumbers(vector.begin(), vector.end()); } catch(Span::FullSpanException &e) { std::cout << e.what() << std::endl; }
     //sp2.dispSpan();
-    std::cout << sp2.shortestSpan() << std::endl;
-    std::cout << sp2.longestSpan() << std::endl;
+    try {
+        std::cout << sp2.shortestSpan() << std::endl;
+        std::cout << sp2.longestSpan() << std::endl;
+    } catch (Span::TooFewValuesException &e) { std::cout << e.what() << std::endl; }
     return 0;
 }

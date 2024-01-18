@@ -24,11 +24,11 @@ public:
 
     class FullSpanException: public std::exception {
     public:
-		virtual const char* what() const throw() { return "Container is full"; }
+		virtual const char* what() const throw() { return "FullSpanException: Container is full"; }
     };
 
     class TooFewValuesException: public std::exception {
     public:
-		virtual const char* what() const throw() { return "Need at least too values"; }
+		virtual const char* what() const throw() { return "TooFewValuesException: Need at least two <int> values"; }
     };
 };
