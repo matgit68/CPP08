@@ -2,8 +2,9 @@
 #include <iostream>
 #include <stack>
 #include <algorithm>
+#include <deque>
 
-template <typename T, Container=deque>
+template <typename T>
 class MutantStack: public std::stack<T> {
 public :
     typedef typename std::deque<T>::iterator iterator;
@@ -17,8 +18,8 @@ public :
         return *this;
     }
 
-    std::deque<T>::iterator begin() { return this->c.begin(); }
-    std::deque<T>::iterator end() { return this->c.end(); }
+    iterator begin() { return this->c.begin(); }
+    iterator end() { return this->c.end(); }
 
 private:
 

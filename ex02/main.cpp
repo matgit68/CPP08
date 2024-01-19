@@ -5,28 +5,32 @@ int main()
     MutantStack<int> mstack;
     mstack.push(5);
     mstack.push(17);
-    std::cout << mstack.top() << std::endl;
-    mstack.pop();
-    std::cout << mstack.size() << std::endl;
     mstack.push(3);
-    mstack.push(5);
+    mstack.push(12);
     mstack.push(0);
     mstack.push(737);
     //[...]
-    MutantStack<int> mstack2(mstack);
     std::cout << "ms : top : "<< mstack.top() << std::endl;
-    std::cout << mstack.size() << std::endl;
-    std::cout << "ms2 : top : "<< mstack2.top() << std::endl;
-    std::cout << mstack2.size() << std::endl;
+    std::cout << "ms : size : "<< mstack.size() << std::endl;
     MutantStack<int>::iterator it = mstack.begin();
     MutantStack<int>::iterator ite = mstack.end();
-    ++it;
-    --it;
+    std::cout << "iterating through MStack from begin to end" << std::endl;
     while (it != ite)
     {
         std::cout << *it << std::endl;
         ++it;
     }
+    std::cout << "stack created from MStack" << std::endl;
     std::stack<int> s(mstack);
+    std::cout << "MStack again, popping till empty (LIFO)" << std::endl;
+    while(!mstack.empty()) {
+        std::cout << mstack.top() << std::endl;
+        mstack.pop();
+    }
+    std::cout << "And now, stack popping" << std::endl;
+    while(!s.empty()) {
+        std::cout << s.top() << std::endl;
+        s.pop();
+    }
     return 0;
 }
