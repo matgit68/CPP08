@@ -20,14 +20,14 @@ int main()
         std::cout << *it << std::endl;
         ++it;
     }
-    std::cout << "stack created from MStack" << std::endl;
+    std::cout << "std::stack s created from MStack" << std::endl;
     std::stack<int> s(mstack);
     std::cout << "MStack again, popping till empty (LIFO)" << std::endl;
     while(!mstack.empty()) {
         std::cout << mstack.top() << std::endl;
         mstack.pop();
     }
-    std::cout << "And now, stack popping" << std::endl;
+    std::cout << "And now, let's pop out std::stack s (deep copy test)" << std::endl;
     while(!s.empty()) {
         std::cout << s.top() << std::endl;
         s.pop();
